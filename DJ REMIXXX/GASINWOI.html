@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>miaw</title>
+  <style>
+    @keyframes rotate {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .rotate {
+      animation: rotate 0.7s linear infinite;
+    }
+
+    *,
+    ::before,
+    ::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      display: grid;
+      place-content: center;
+      font-family: Arial, sans-serif;
+      min-height: 100vh;
+    }
+
+    .card {
+      max-width: 400px;
+      padding: 20px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+      background-color: white;
+      border-radius: 10px;
+    }
+
+    h1 {
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+
+    input {
+      padding: 10px 15px;
+      border: 1px solid black;
+    }
+
+    input:focus {
+      outline: 1px solid rgb(84, 121, 255);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+    <h1>Putarkan masbro</h1>
+    <input type="text" placeholder="masukan kode rahasia :o">
+  </div>
+  <audio src="DJ APAKAH AKU SEJAHAT ITU DI MATAMU - AKU DIMATAMU REMIX FULL BASS VIRAL TIKTOK TERBARU 2023.mp3" loop
+    id="musikk"></audio>
+
+  <script>
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const body = document.getElementsByTagName('body')[0];
+      const musik = document.getElementById("musikk");
+      let colorInterval;
+
+      function getRandomColor() {
+        const r = Math.floor(Math.random() * 256);
+        const g = Math.floor(Math.random() * 256);
+        const b = Math.floor(Math.random() * 256);
+        const color = `rgb(${r}, ${g}, ${b})`;
+        return body.style.backgroundColor = color;
+      }
+
+      document.querySelector("input").addEventListener('input', () => {
+        const value = document.querySelector('input').value;
+        if (value === "gas") {
+          if (colorInterval) {
+            clearInterval(colorInterval);
+          }
+          colorInterval = setInterval(() => {
+            body.style.backgroundColor = getRandomColor();
+          }, 100);
+          musik.currentTime = 3;
+          musik.play();
+          body.classList.add('rotate');
+        } else {
+          if (colorInterval) {
+            clearInterval(colorInterval);
+            colorInterval = false;
+          }
+          body.style.backgroundColor = '';
+          body.classList.remove('rotate');
+          musik.pause();
+          musik.currentTime = 0;
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Change background color</title>
+  <style>
+    *,
+    ::before,
+    ::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      display: grid;
+      place-content: center;
+      min-height: 100vh;
+    }
+
+    div {
+      font-family: Arial, sans-serif;
+    }
+
+    button {
+      border: 1px solid black;
+      padding: 10px 20px;
+      color: white;
+      cursor: pointer;
+    }
+
+    #red {
+      background-color: red;
+    }
+
+    #green {
+      background-color: green;
+    }
+
+    #blue {
+      background-color: blue;
+    }
+
+    #random {
+      color: black;
+    }
+
+    #reset {
+      background-color: black;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <h1>!! WARNING Epilepsi !!</h1>
+    <button id="red">Red</button>
+    <button id="green">Green</button>
+    <button id="blue">Blue</button>
+    <button id="random">Random</button>
+    <button id="reset">Stop</button>
+  </div>
+
+  <script>
+    const body = document.getElementsByTagName('body')[0];
+    let colorInterval;
+
+    function setColor(name) {
+      body.style.backgroundColor = name
+    };
+
+    document.getElementById('red').addEventListener('click', () => setColor('red'))
+    document.getElementById('green').addEventListener('click', () => setColor('green'))
+    document.getElementById('blue').addEventListener('click', () => setColor('blue'))
+
+
+    function getRandomColor() {
+      const r = Math.floor(Math.random() * 256);
+      const g = Math.floor(Math.random() * 256);
+      const b = Math.floor(Math.random() * 256);
+      const color = `rgb(${r}, ${g}, ${b})`;
+      return body.style.backgroundColor = color;
+    }
+
+    document.getElementById("random").addEventListener('click', () => {
+      if (colorInterval) {
+        clearInterval(colorInterval);
+      }
+      colorInterval = setInterval(() => {
+        body.style.backgroundColor = getRandomColor();
+      }, 100);
+    })
+
+    document.getElementById('reset').addEventListener('click', () => {
+      if (colorInterval) {
+        clearInterval(colorInterval);
+        colorInterval = false;
+      }
+    })
+  </script>
+</body>
+
+</html>
