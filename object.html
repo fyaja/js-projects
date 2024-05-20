@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Object Practice</title>
+</head>
+
+<body>
+  <script>
+    // 1 -> 3
+    const product = {
+      product1: {
+        name: 'basketball',
+        price: 2095
+      },
+      product2: {
+        name: 'lemper',
+        price: 3000
+      }
+    };
+
+    console.log(product);
+
+    product.price += 500
+    console.log(product);
+
+    // product['delivery-time'] = '3 days';
+    // console.log(product);
+
+    // 4
+    function comparePrice(product1, product2) {
+      if (product1.price < product2.price) {
+        return product1.name;
+      } else {
+        return product2.name;
+      }
+    }
+
+    console.log(comparePrice(product.product1, product.product2));
+
+    // 5.1 
+    function isSameProduct1(product1, product2) {
+      if (
+        product1.nama === product2.nama &&
+        product1.harga === product2.harga
+      ) {
+        return true
+      } else {
+        return false
+      }
+    };
+
+    // 5.2
+    function isSameProduct2(product1, product2) {
+      return (
+        product1.nama === product2.nama &&
+        product1.harga === product2.harga
+      );
+    }
+
+    const barang1 = {
+      nama: 'saipul',
+      harga: '10'
+    }
+
+    const barang2 = {
+      nama: 'saipul',
+      harga: '10'
+    };
+
+    console.log(isSameProduct2(barang1, barang2))
+
+    // 6
+    const nama = 'JAHAT';
+    console.log(nama.toLowerCase());
+    console.log(nama.repeat(2));
+
+  </script>
+</body>
+
+</html>

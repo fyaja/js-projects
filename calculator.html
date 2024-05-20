@@ -10,56 +10,92 @@
 <body>
   <p>
     <button onclick="
-    calculation += '1';
-    console.log(calculation)
+    calculate('1');
     ">1</button>
     <button onclick="
-    calculation += '2';
-    console.log(calculation)">2</button>
+    calculate('2');
+    ">2</button>
     <button onclick="
-    calculation += '3';
-    console.log(calculation)">3</button>
+    calculate('3');
+    ">3</button>
   </p>
   <p>
     <button onclick="
-    calculation += '4';
-    console.log(calculation)
+    calculate('4');
     ">4</button>
     <button onclick="
-    calculation += '5';
-    console.log(calculation)">5</button>
+    calculate('5');
+    ">5</button>
     <button onclick="
-    calculation += '6';
-    console.log(calculation)">6</button>
+    calculate('6');
+    ">6</button>
   </p>
   <p>
     <button onclick="
-    calculation += '7';
-    console.log(calculation)
+    calculate('7');
     ">7</button>
     <button onclick="
-    calculation += '8';
-    console.log(calculation)">8</button>
+    calculate('8');
+    ">8</button>
     <button onclick="
-    calculation += '9';
-    console.log(calculation)">9</button>
+    calculate('9');
+    ">9</button>
   </p>
 
   <p>
     <button onclick="
-    calculation += '0';
-    console.log(calculation)">0</button>
+    calculate('0');
+    ">0</button>
     <button onclick="
-    calculation += ' + ';
-    console.log(calculation)">+</button>
+    calculate(' + ');
+    ">+</button>
     <button onclick="
-    calculation = eval(calculation);
-    console.log(calculation);
+    calculate(' - ');
+    ">-</button>
+  </p>
+
+  <p>
+    <button onclick="
+    calculate(' * ');
+    ">*</button>
+    <button onclick="
+    calculate(' / ');
+    ">/</button>
+    <button onclick="
+    calculate('.');
+    ">.</button>
+  </p>
+
+  <p>
+    <button onclick="
+    getResult();
     ">=</button>
+    <button onclick="
+    clearCalculation();
+    ">Clear</button>
   </p>
 
   <script>
-    let calculation = '';
+    let calculation = localStorage.getItem('calculation') || '';
+
+    function calculate(x) {
+      calculation += x;
+      localStorage.setItem('calculation', calculation);
+      console.log(calculation);
+    }
+
+    function getResult() {
+      calculation = eval(calculation);
+      localStorage.setItem('calculation', calculation);
+      console.log(calculation);
+    }
+
+    function clearCalculation() {
+      calculation = '';
+      localStorage.removeItem('calculation');
+      console.log(calculation);
+    }
+
   </script>
 </body>
 

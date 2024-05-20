@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gacha</title>
+</head>
+
+<body>
+  <button onclick="
+  playGame('garuda')
+  ">Garuda</button>
+  <button onclick="
+  playGame('rupiah')
+  ">Rupiah</button>
+  <button onclick="
+  score = {menang: 0, kalah: 0 };
+  localStorage.removeItem('score');
+  alert(`Reset.
+Menang : ${score.menang}. Kalah : ${score.kalah}`);
+  ">Reset Skor</button>
+
+  <script>
+    let score =
+      JSON.parse(localStorage.getItem('score')) ||
+      {
+        menang: 0,
+        kalah: 0
+      };
+
+
+    function playGame(playerMove) {
+      const coinMove = randomCoinMove();
+      let result = '';
+      if (coinMove === playerMove) {
+        result = 'Menang';
+      } else {
+        result = 'Kalah';
+      }
+
+      if (result === 'Menang') {
+        score.menang++
+      } else {
+        score.kalah++
+      }
+
+      localStorage.setItem('score', JSON.stringify(score));
+
+      alert(`Kamu menebak ${playerMove} dan hasilnya ${coinMove}. Kamu ${result}
+Menang : ${score.menang}. Kalah : ${score.kalah}`)
+    }
+
+    function randomCoinMove() {
+      const coin = Math.random();
+      let coinMove = ''
+      if (coin > 0 && coin < 1 / 2) {
+        coinMove = 'garuda';
+      } else if (coin >= 1 / 2 && coin < 1) {
+        coinMove = 'rupiah';
+      }
+
+      return coinMove;
+    }
+  </script>
+</body>
+
+</html>
