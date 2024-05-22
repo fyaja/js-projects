@@ -18,12 +18,16 @@
   <button onclick="
     playGame('Gajah');
   ">Gajah</button>
+  <p class="result"></p>
+  <p class="yourmove"></p>
+  <p class="score"></p>
   <button onclick="
   resetScore();
   ">Reset Score</button>
 
   <script>
     let score = JSON.parse(localStorage.getItem('score')) || { Menang: 0, Kalah: 0, Seri: 0 };
+    updateScoreElement();
 
     function playGame(playerMove) {
       const computerMove = pickComputerMove();
@@ -52,8 +56,13 @@
 
       localStorage.setItem('score', JSON.stringify(score));
 
-      alert(`Kamu pilih ${playerMove} dan komputer pilih ${computerMove}, Kamu ${result}.
-Menang: ${score.Menang}. Kalah: ${score.Kalah}. Seri: ${score.Seri}`);
+      document.querySelector('.result')
+        .innerHTML = `Kamu ${result}.`;
+
+      document.querySelector('.yourmove')
+        .innerHTML = `Kamu pilih ${playerMove} dan komputer pilih ${computerMove}`;
+
+      updateScoreElement();
     }
 
     function pickComputerMove() {
@@ -72,13 +81,18 @@ Menang: ${score.Menang}. Kalah: ${score.Kalah}. Seri: ${score.Seri}`);
       return computerMove;
     }
 
+    function updateScoreElement() {
+      document.querySelector('.score')
+        .innerHTML = `Menang: ${score.Menang}. Kalah: ${score.Kalah}. Seri: ${score.Seri}`;
+    }
+
     function resetScore() {
       score.Menang = 0;
       score.Kalah = 0;
       score.Seri = 0;
       localStorage.removeItem('score');
-      alert(`Reset.
-Menang: ${score.Menang}. Kalah: ${score.Kalah}. Seri: ${score.Seri}`);
+
+      updateScoreElement();
     }
   </script>
 </body>

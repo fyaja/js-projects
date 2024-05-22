@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dom</title>
+</head>
+
+<body>
+  <p>
+    <button>9a</button>
+    <button class="button2" onclick="
+    // 2
+    const button2 = document.querySelector('.button2');
+    if (button2.innerText === '9b'){
+      button2.innerHTML = '9b done!';
+    } else {
+      button2.innerHTML = '9b';
+    }
+    ">9b</button>
+  </p>
+
+  <input class="input1" type="text" placeholder="Your Name" onkeydown="
+  displayEnter(event);
+  ">
+  <button class="button3" onclick="
+  displayYourName();
+  ">Submit</button>
+  <p class="result"></p>
+
+  <input class="input2" onkeyup="
+  displayOnKeyup();
+  "></input>
+  <p class="type"></p>
+
+  <script>
+    // 1
+    console.log(document.querySelector('button'));
+
+    // 3
+    function displayEnter(event) {
+      if (event.key === 'Enter') {
+        displayYourName();
+      }
+    }
+
+    function displayYourName() {
+      const inputValue = document.querySelector('.input1').value;
+      if (inputValue === '') {
+        alert('isi oi');
+        return;
+      }
+
+      document.querySelector('.result').innerHTML = `Your name is : ${inputValue}`;
+    }
+
+    // 4
+    function displayOnKeyup() {
+      const inputValue = document.querySelector('.input2').value;
+      document.querySelector('.type')
+        .innerHTML = inputValue;
+      console.log(inputValue)
+    }
+  </script>
+</body>
+
+</html>

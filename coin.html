@@ -9,17 +9,19 @@
 
 <body>
   <button onclick="
-  playGame('garuda')
+  playGame('Garuda')
   ">Garuda</button>
   <button onclick="
-  playGame('rupiah')
+  playGame('Rupiah')
   ">Rupiah</button>
   <button onclick="
   score = {menang: 0, kalah: 0 };
   localStorage.removeItem('score');
-  alert(`Reset.
-Menang : ${score.menang}. Kalah : ${score.kalah}`);
+  updateScoreElement();
   ">Reset Skor</button>
+  <p class="result"></p>
+  <p class="yourmove"></p>
+  <p class="skor"></p>
 
   <script>
     let score =
@@ -29,6 +31,7 @@ Menang : ${score.menang}. Kalah : ${score.kalah}`);
         kalah: 0
       };
 
+    updateScoreElement()
 
     function playGame(playerMove) {
       const coinMove = randomCoinMove();
@@ -47,20 +50,30 @@ Menang : ${score.menang}. Kalah : ${score.kalah}`);
 
       localStorage.setItem('score', JSON.stringify(score));
 
-      alert(`Kamu menebak ${playerMove} dan hasilnya ${coinMove}. Kamu ${result}
-Menang : ${score.menang}. Kalah : ${score.kalah}`)
+      document.querySelector('.result')
+        .innerHTML = `Kamu ${result}`;
+
+      document.querySelector('.yourmove')
+        .innerHTML = `Kamu menebak ${playerMove} dan hasilnya ${coinMove}`;
+
+      updateScoreElement();
     }
 
     function randomCoinMove() {
       const coin = Math.random();
       let coinMove = ''
       if (coin > 0 && coin < 1 / 2) {
-        coinMove = 'garuda';
+        coinMove = 'Garuda';
       } else if (coin >= 1 / 2 && coin < 1) {
-        coinMove = 'rupiah';
+        coinMove = 'Rupiah';
       }
 
       return coinMove;
+    }
+
+    function updateScoreElement() {
+      document.querySelector('.skor')
+        .innerHTML = `Menang : ${score.menang}. Kalah : ${score.kalah}`;
     }
   </script>
 </body>

@@ -10,7 +10,7 @@
 <body>
   <p>
     <button onclick="
-    console.log(`Cart Quantity : ${cartQuantity}`)
+    result.innerHTML = `Cart Quantity : ${cartQuantity}`;
    ">Show Quantity</button>
     <button onclick="
     updateCartQuantity(1, '+')
@@ -41,31 +41,34 @@
     ">-3</button>
     <button onclick="
     cartQuantity = 0;
-    console.log(`Cart was reset.`);
-    console.log(`Cart Quantity : ${cartQuantity}`)
+    result.innerHTML = `Cart was reset. Cart Quantity : ${cartQuantity}`;
     ">Reset Cart</button>
   </p>
 
+  <p class="result"></p>
+
   <script>
     let cartQuantity = 0;
+    let result = document.querySelector('.result');
 
     function updateCartQuantity(num, op) {
+
       if (op === '+') {
-        if (cartQuantity >= 10) {
-          alert('The cart is full');
+        if (cartQuantity + num > 10) {
+          result.innerHTML = 'The cart is already full';
           return;
         }
         cartQuantity += num;
       }
 
       else if (op === '-') {
-        if (cartQuantity <= 0) {
-          alert('The cart is already empty');
+        if (cartQuantity - num < 0) {
+          result.innerHTML = 'The cart is already empty';
           return;
         }
         cartQuantity -= num;
       }
-      console.log(`Cart Quantity : ${cartQuantity}`)
+      result.innerHTML = `Cart Quantity : ${cartQuantity}`;
     }
   </script>
 </body>

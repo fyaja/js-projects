@@ -8,6 +8,8 @@
 </head>
 
 <body>
+  <p class="result"></p>
+
   <p>
     <button onclick="
     calculate('1');
@@ -77,25 +79,30 @@
 
   <script>
     let calculation = localStorage.getItem('calculation') || '';
+    displayResultElement();
 
     function calculate(x) {
       calculation += x;
+      displayResultElement();
       localStorage.setItem('calculation', calculation);
-      console.log(calculation);
     }
 
     function getResult() {
       calculation = eval(calculation);
+      displayResultElement();
       localStorage.setItem('calculation', calculation);
-      console.log(calculation);
     }
 
     function clearCalculation() {
       calculation = '';
-      localStorage.removeItem('calculation');
-      console.log(calculation);
+      displayResultElement();
+      localStorage.setItem('calculation');
     }
 
+    function displayResultElement() {
+      document.querySelector('.result')
+        .innerHTML = calculation;
+    }
   </script>
 </body>
 
