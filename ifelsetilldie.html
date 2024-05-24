@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+
+<body>
+  <p>Return odd or even number</p>
+  <input type="text" placeholder="put here">
+  <button onclick="
+  oddOrEven();
+  ">check</button>
+  <p class="result"></p>
+
+  <script>
+    function oddOrEven() {
+      const result = document.querySelector('.result');
+      const inputValue = Number(document.querySelector('input').value);
+
+      if (isNaN(inputValue)) {
+        result.innerHTML = 'Please enter a valid number';
+        return;
+      }
+
+      if (inputValue % 2 === 0) {
+        result.innerHTML = 'even';
+      } else {
+        result.innerHTML = 'odd';
+      }
+    }
+
+    // js practice
+    function triangleType(side1, side2, side3) {
+      if (side1 === side2 && side2 === side3) {
+        return `Equilateral Triangle`;
+      }
+
+      if (side1 === side2 && side2 !== side3
+        || side1 === side3 && side3 !== side2
+        || side2 === side3 && side1 !== side3) {
+        return `Isosceles Triangle`;
+      }
+
+      return `Scalene Triangle`
+    }
+
+    console.log(triangleType(5, 5, 5))
+    console.log(triangleType(5, 4, 5))
+    console.log(triangleType(5, 4, 2))
+
+    // calculator
+    function calculate(num1, num2, operator) {
+      if (operator === '+') {
+        return num1 + num2;
+      } else if (operator === '-') {
+        return num1 - num2;
+      } else if (operator === '*') {
+        return num1 * num2;
+      } else if (operator === '/') {
+        return num1 / num2;
+      }
+
+      return 'Invalid operator';
+    }
+
+    console.log(calculate(5, 2, '*'))
+
+    function fizzBuzz() {
+      for (let i = 1; i <= 100; i++) {
+        if (i % 3 === 0 && i % 5 === 0) {
+          console.log('Fizz')
+        } else if (i % 5 === 0) {
+          console.log('Buzz')
+        } else if (i % 3 === 0) {
+          console.log('FizzBuzz')
+        } else {
+          console.log(i)
+        }
+      }
+    }
+
+    function checkPrime(num) {
+      if (num <= 1) {
+        return `${num} is not a prime number`;
+      }
+
+      for (let i = 2; i <= Math.sqrt(num); i++) {
+        if (num % i === 0) {
+          return `${num} is not a prime number`;
+        }
+      }
+
+      return `${num} is a prime number`;
+    }
+
+    console.log(checkPrime(7))
+
+    function checkDay(day) {
+      const days = ['Invalid days', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+
+      if (day < 1 || day > 7) {
+        return days[0]
+      }
+
+      return days[day];
+    }
+
+    function checkMonth(month) {
+      const months = ['Invalid months', 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember']
+
+      if (month < 1 || month > 12) {
+        return months[0]
+      }
+
+      return months[month]
+    }
+
+    console.log(checkMonth(3))
+
+    console.log(checkDay(2))
+
+
+  </script>
+</body>
+
+</html>

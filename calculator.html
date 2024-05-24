@@ -5,77 +5,117 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Calculator</title>
+  <style>
+    * {
+      font-family: arial;
+      color: white;
+    }
+
+    body {
+      background-color: black;
+    }
+
+    .result {
+      font-size: 45px;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 60px);
+      gap: 5px;
+    }
+
+    button {
+      font-size: 27px;
+      border: none;
+      height: 60px;
+      background-color: rgb(67, 67, 67);
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .clear-btn {
+      font-size: 17px;
+    }
+
+    .orange {
+      background-color: orange;
+    }
+  </style>
 </head>
 
 <body>
   <p class="result"></p>
 
-  <p>
+  <div class="buttons">
     <button onclick="
     calculate('1');
     ">1</button>
+
     <button onclick="
     calculate('2');
     ">2</button>
+
     <button onclick="
     calculate('3');
     ">3</button>
-  </p>
-  <p>
+
+    <button class="orange" onclick="
+    calculate(' + ');
+    ">+</button>
+
     <button onclick="
     calculate('4');
     ">4</button>
+
     <button onclick="
     calculate('5');
     ">5</button>
+
     <button onclick="
     calculate('6');
     ">6</button>
-  </p>
-  <p>
+
+    <button class="orange" onclick="
+    calculate(' - ');
+    ">-</button>
+
     <button onclick="
     calculate('7');
     ">7</button>
+
     <button onclick="
     calculate('8');
     ">8</button>
+
     <button onclick="
     calculate('9');
     ">9</button>
-  </p>
 
-  <p>
+    <button class="orange" onclick="
+    calculate(' * ');
+    ">*</button>
+
     <button onclick="
     calculate('0');
     ">0</button>
-    <button onclick="
-    calculate(' + ');
-    ">+</button>
-    <button onclick="
-    calculate(' - ');
-    ">-</button>
-  </p>
 
-  <p>
-    <button onclick="
-    calculate(' * ');
-    ">*</button>
-    <button onclick="
-    calculate(' / ');
-    ">/</button>
     <button onclick="
     calculate('.');
     ">.</button>
-  </p>
 
-  <p>
     <button onclick="
     getResult();
     ">=</button>
-    <button onclick="
+
+    <button class="orange" onclick="
+    calculate(' / ');
+    ">/</button>
+
+    <button class="clear-btn" onclick="
     clearCalculation();
     ">Clear</button>
-  </p>
+  </div>
 
   <script>
     let calculation = localStorage.getItem('calculation') || '';

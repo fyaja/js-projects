@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo List</title>
+</head>
+
+<body>
+  <p>Todo List</p>
+  <input type="text" placeholder="Todo name">
+  <button onclick="
+  addArray();
+  ">Add</button>
+  <button onclick="
+  removeArray();
+  ">Remove</button>
+  <div>
+
+  </div>
+
+  <script>
+    const todoList = [];
+
+    function showTodo() {
+      let todoListHtml = ``;
+
+      for (let i = 0; i < todoList.length; i++) {
+        const todo = todoList[i];
+        const html = `<p>${todo}</p>`;
+        todoListHtml += html;
+      }
+
+      document.querySelector('div').innerHTML = todoListHtml;
+    }
+
+    function addArray() {
+      const inputElement = document.querySelector('input');
+      const inputValue = inputElement.value;
+
+      todoList.push(inputValue);
+
+      inputElement.value = '';
+      showTodo();
+    }
+
+    function removeArray() {
+      todoList.splice(0, 1);
+      showTodo();
+    }
+
+  </script>
+</body>
+
+</html>
