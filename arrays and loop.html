@@ -190,6 +190,38 @@
     }
 
     console.log(countWords(['name', 'yo', 'wsp', 'name']))
+
+    // 15
+    function countSheep(num) {
+      let result = '';
+
+      for (let i = 0; i <= num; i++) {
+        if (i > 0) {
+          result += `${i} sheep.. `;
+        }
+      }
+
+      return result;
+    }
+
+    console.log(countSheep(4))
+
+    // 16
+    function neutralize(op1, op2) {
+      let result = ''
+      for (let i = 0; i < op1.length; i++) {
+        if (op1[i] === op2[i]) {
+          result += op1[i];
+        } else {
+          result += 0;
+        }
+      }
+      return result;
+    }
+
+    console.log(neutralize('+--', '++-'));
+
+
     // for (let i = 0; i <= 10; i++) {
     //   console.log(i)
     // }

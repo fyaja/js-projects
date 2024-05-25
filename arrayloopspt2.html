@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Array Loops pt 2</title>
+</head>
+
+<body>
+  <script>
+    // 16
+    const array = ['world', 'hello', 'lol', 'search', 'search']
+
+    let result = -1;
+
+    for (let i = 0; i < array.length; i++) {
+      if (array[i] === 'search') {
+        result = i;
+      }
+    }
+
+    console.log(result)
+
+    // 17
+    for (let i = 0; i < array.length; i++) {
+      if (array[i] === 'search') {
+        result = i;
+        break;
+      }
+    }
+
+    console.log(result)
+
+    // 19
+    let foods = ['egg', 'apple', 'egg', 'ham'];
+
+    function removeEgg(foods) {
+      const result = []
+
+      for (let i = 0; i < foods.length; i++) {
+        if (foods[i] === 'egg') {
+          continue;
+        }
+
+        result.push(foods[i])
+      }
+
+      return result
+    }
+
+    console.log(removeEgg(foods));
+
+    // 20 & 21
+    foods = ['egg', 'apple', 'egg', 'egg', 'ham'];
+
+    function updateRemoveEgg(foods) {
+      const foodsCopy = foods.slice();
+      const foodsReverse = foodsCopy.reverse();
+      const result = []
+      let eggRemove = 0;
+
+      for (let i = 0; i < foodsReverse.length; i++) {
+        if (foodsReverse[i] === 'egg' && eggRemove < 2) {
+          eggRemove++;
+          continue;
+        }
+
+        result.push(foodsReverse[i])
+      }
+
+      return result.reverse()
+    }
+
+    console.log(updateRemoveEgg(foods));
+    console.log(foods);
+
+    // 22
+    for (let i = 1; i <= 20; i++) {
+      if (i % 3 === 0 && i % 5 == 0) {
+        console.log('fizzbuzz')
+      } else if (i % 3 === 0) {
+        console.log('fizz')
+      } else if (i % 5 === 0) {
+        console.log('buzz')
+      } else {
+        console.log(i)
+      }
+    }
+
+    // 23
+    function findIndex(array, word) {
+      for (let i = 0; i < array.length; i++) {
+        if (array[i] === word) {
+          return i;
+        }
+      }
+
+      return -1;
+    }
+
+    const array2 = ['world', 'hello', 'lol', 'search', 'search'];
+
+    function unique(array) {
+      let result = [];
+
+      for (let i = 0; i < array.length; i++) {
+        const value = array[i];
+        if (findIndex(result, value) === -1) {
+          result.push(value)
+        }
+      }
+
+      return result;
+    }
+
+    console.log(unique(array2))
+  </script>
+</body>
+
+</html>
