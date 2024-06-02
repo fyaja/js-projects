@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // for (let i = 0; i <= 10; i += 2) {
+    //   console.log(i)
+    // }
+
+    // for (let i = 0; i <= 10; i++) {
+    //   if (i % 2 === 1) {
+    //     console.log(`Ganjil`)
+    //   } else {
+    //     console.log(`Genap`)
+    //   }
+    // }
+
+    // const makanan = ['ikan', 'ayam', 'sayur'];
+    // for (let i = 0; i < makanan.length; i++) {
+    //   console.log(i, makanan[i])
+    // }
+
+    // const pilihan = 'abcd';
+    // for (let i = 1; i <= 10; i++) {
+    //   console.log(`${i}. Soal:`)
+    //   for (let j = 0; j < pilihan.length; j++) {
+    //     console.log(`${pilihan[j]}. Pilihan jawaban`)
+    //   }
+    // }
+
+    // nested loop
+    // const studentRow = [
+    //   ['budi', 'farhan', 'iqbal', 'fikri'],
+    //   ['asep', 'lani', 'joni', 'siti']
+    // ]
+
+    // dapatkan murid / student dari seluruh baris masukan ke array baru, susun bernomor;
+    // const students = []
+
+    // for (rows of studentRow) {
+    //   for (row of rows) {
+    //     students.push(row)
+    //   }
+    // }
+
+    // console.log(students)
+
+    // for (let i = 0; i < studentRow.length; i++) {
+    //   const row = studentRow[i];
+    //   console.log(`Baris ke ${i + 1} ada:`)
+    //   for (let j = 0; j < row.length; j++) {
+    //     console.log(row[j])
+    //   }
+    // }
+
+    // for (let i = 0; i <= 100; i++) {
+    //   console.log(i)
+    //   if (i === 50) {
+    //     break
+    //   }
+    // }
+
+    // guess number coy
+    // let max = parseInt(prompt('masukan nilai maksimal'));
+
+    // while (!max) {
+    //   max = parseInt(prompt('masukan nilai maksimal'));
+    // }
+
+    // const targetNum = Math.floor(Math.random() * max) + 1;
+
+    // let guess = parseInt(prompt('masukan tebakan mu'))
+
+    // let attempt = 0;
+
+    // while (parseInt(guess) !== targetNum) {
+    //   attempt++
+    //   if (guess > targetNum) {
+    //     guess = parseInt(prompt('terlalu besar. tebak lagi'))
+    //   } else {
+    //     guess = parseInt(prompt('terlalu kecil. tebak lagi'))
+    //   }
+    // }
+
+    // alert(`cihuyy bener njirs. Dengan ${attempt} percobaan.`)
+
+    // for ..of
+    // const makananMakanan = ['ayam', 'lemper', 'nasi']
+
+    // for (makanan of makananMakanan) {
+    //   console.log(`Makanan : ${makanan}`)
+    // }
+
+    // const nums = [1, 2, 3]
+    // let total = 0;
+
+    // for (let i = 0; i < nums.length; i++) {
+    //   total += nums[i];
+    // }
+
+    // console.log(total)
+
+    // console.log(nums[nums.length - 1])
+
+    // function getLastValue(array) {
+    //   for (let i = 0; i < array.length; i++) {
+    //     return array[array.length - 1];
+    //   }
+    // }
+
+    // console.log(getLastValue(nums))
+
+    // function swapArray(array) {
+    //   const lastValue = array[array.length - 1];
+    //   const firstValue = array[0];
+
+    //   array[0] = lastValue;
+    //   array[array.length - 1] = firstValue;
+
+    //   return array
+    // }
+
+    // console.log(swapArray(nums))
+
+    // for (let i = 0; i <= 10; i += 2) {
+    //   console.log(i)
+    // }
+
+    // for (let i = 5; i >= 0; i--) {
+    //   console.log(i)
+    // }
+
+    // let ar = []
+    // for (let i = 0; i < nums.length; i++) {
+    //   ar.push(nums[i] + 1)
+    // }
+
+    // console.log(ar)
+
+    // function addOne(array) {
+    //   let ar = []
+    //   for (let i = 0; i < array.length; i++) {
+    //     ar.push(array[i] + 1)
+    //   }
+    //   return ar
+    // }
+
+    // console.log(addOne(nums))
+
+    // function addNum(array, num) {
+    //   let ar = []
+    //   for (let i = 0; i < array.length; i++) {
+    //     ar.push(array[i] + num)
+    //   }
+    //   return ar
+    // }
+
+    // console.log(addNum(nums, 2))
+
+    // function addArrays(array1, array2) {
+    //   let ar = []
+    //   for (let i = 0; i < array1.length; i++) {
+    //     ar.push(array1[i] + array2[i])
+    //   }
+    //   return ar
+    // }
+
+    // console.log(addArrays(nums, nums))
+
+    // const pos = [1, 2]
+    // function countPositive(array) {
+    //   let count = 0;
+    //   for (let i = 0; i < array.length; i++) {
+    //     if (array[i] > 0) {
+    //       count++
+    //     }
+    //   }
+    //   return count;
+    // }
+
+    // console.log(countPositive(pos))
+
+    // function minMax(array) {
+    //   const obj = {
+    //     min: null,
+    //     max: null
+    //   }
+
+    //   for (let i = 0; i < array.length; i++) {
+    //     if (array[i] < obj.min || obj.min === null) {
+    //       obj.min = array[i]
+    //     }
+
+    //     if (array[i] > obj.max || obj.max === null) {
+    //       obj.max = array[i]
+    //     }
+    //   }
+    //   return obj
+    // }
+
+    // console.log(minMax(pos))
+
+    const apalah = ['apalah', 'apalah', 'ayam']
+    // function countWords(words) {
+    //   const obj = {}
+    //   for (let i = 0; i < words.length; i++) {
+    //     if (obj[words[i]]) {
+    //       obj[words[i]]++
+    //     } else {
+    //       obj[words[i]] = 1;
+    //     }
+    //   }
+    //   return obj
+    // }
+    // console.log(countWords(apalah))
+
+    // let foundIndex = -1
+
+    // for (let i = 0; i < apalah.length; i++) {
+    //   if (apalah[i] === 'search') {
+    //     foundIndex = i;
+    //     break;
+    //   }
+    // }
+
+    // console.log(foundIndex)
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Array</title>
+</head>
+
+<body>
+  <script>
+    // ketika ingin mengcopy sebuah array pastikan menggunakan slice karena array sebuah object yang hanyalah reference.
+    const array = [1, 2, 3]
+    console.log(array)
+
+    const arrayCopy = array.slice();
+    arrayCopy[0] = 'copy';
+    console.log(arrayCopy)
+    console.log(array)
+
+    // const array2 = [1, 2, 3]
+    // const firstValue = array2[0]
+    // const secondValue = array2[1]
+
+    // ===
+
+    // const [firstValue, secondValue] = [1, 2, 3]
+    // console.log(firstValue)
+    // console.log(secondValue)
+
+    // break quit loop
+    // continue skip 1 iteration
+
+    for (let i = 0; i <= 10; i++) {
+      if (i % 3 === 0) {
+        continue;
+      }
+      console.log(i)
+    }
+
+    // if we use function we can use return for another way tp exit loops
+
+    // const apalah = ['apple', 'banana', 'search', 'peach', 'search']
+    // let foundIndex = -1
+    // for (let i = 0; i < apalah.length; i++) {
+    //   if (apalah[i] === 'search') {
+    //     foundIndex = i;
+    //     break;
+    //   }
+    // }
+
+    // console.log(foundIndex)
+
+    // function findIndex(array, word) {
+    //   let foundIndex = -1;
+    //   for (let i = 0; i < array.length; i++) {
+    //     if (array[i] === word) {
+    //       foundIndex = i;
+    //       break;
+    //     }
+    //   }
+    //   return foundIndex;
+    // }
+
+    // console.log(findIndex(apalah, 'peach'))
+
+    const makanan = ['ayam', 'telur', 'telur', 'daging', 'telur']
+
+    // function removeEgg(foods) {
+    //   let result = [];
+    //   let count = 2;
+    //   for (let i = 0; i < foods.length; i++) {
+    //     if (foods[i] === 'telur' && count > 0) {
+    //       count--
+    //       continue;
+    //     } else {
+    //       result.push(foods[i])
+    //     }
+    //   }
+    //   return result
+    // }
+
+    // console.log(removeEgg(makanan))
+
+    // function removeTwoLastEgg(foods) {
+    //   let foodsReverse = foods.reverse();
+    //   let result = [];
+    //   let count = 2;
+    //   for (let i = 0; i < foodsReverse.length; i++) {
+    //     if (foodsReverse[i] === 'telur' && count > 0) {
+    //       count--
+    //       continue;
+    //     } else {
+    //       result.push(foodsReverse[i])
+    //     }
+    //   }
+    //   return result.reverse()
+    // }
+
+    // console.log(removeTwoLastEgg(makanan))
+  </script>
+</body>
+
+</html>

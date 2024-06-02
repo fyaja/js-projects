@@ -4,50 +4,135 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Todo List</title>
+  <title>todo</title>
+
+  <style>
+    * {
+      font-family: Arial;
+    }
+
+    .div-3,
+    .result-3 {
+      display: grid;
+      grid-template-columns: 250px 150px 100px;
+      column-gap: 10px;
+      row-gap: 10px;
+      align-items: center;
+    }
+
+    .input3,
+    .date {
+      font-size: 15px;
+      padding: 6px;
+    }
+
+    .btn-3 {
+      border: none;
+      color: white;
+      background-color: green;
+      font-size: 15px;
+      cursor: pointer;
+      padding: 10px;
+    }
+
+    .delete {
+      border: none;
+      color: white;
+      background-color: red;
+      font-size: 15px;
+      cursor: pointer;
+      padding: 10px;
+    }
+  </style>
 </head>
 
 <body>
-  <p>Todo List</p>
-  <input type="text" placeholder="Todo name">
+  <p>Todo List Practice 1</p>
+  <input class="input1" type="text" placeholder="Todo name">
   <button onclick="
-  addArray();
-  ">Add</button>
-  <button onclick="
-  removeArray();
-  ">Remove</button>
-  <div>
+  clickButton()">Add</button>
 
+  <p>Todo List Practice 2</p>
+  <input class="input2" type="text" placeholder="Todo name">
+  <button onclick="
+  clickButton2()">Add</button>
+  <div class="result-2"></div>
+
+  <p>Todo List Practice 3</p>
+  <div class="div-3">
+    <input class="input3" type="text" placeholder="Todo name">
+    <input type="date" class="date">
+    <button class="btn-3" onclick="
+    clickButton3()">Add</button>
+    <div class="result-3"></div>
   </div>
 
   <script>
-    const todoList = [];
+    // ver1
+    let array = []
 
-    function showTodo() {
-      let todoListHtml = ``;
+    function clickButton() {
+      const input = document.querySelector('.input1');
+      const inputValue = input.value;
+      array.push(inputValue)
+      console.log(array)
+      input.value = '';
+    }
 
-      for (let i = 0; i < todoList.length; i++) {
-        const todo = todoList[i];
-        const html = `<p>${todo}</p>`;
-        todoListHtml += html;
+    // ver2
+    let array2 = []
+    displayValue2();
+
+    function clickButton2() {
+      const input = document.querySelector('.input2');
+      const inputValue = input.value;
+      array2.push(inputValue)
+      displayValue2();
+      input.value = '';
+    }
+
+    function displayValue2() {
+      let result = '';
+      const p = document.querySelector('.result-2');
+      for (let i = 0; i < array2.length; i++) {
+        const html = `<p>${array2[i]}</p>`;
+        result += html;
       }
-
-      document.querySelector('div').innerHTML = todoListHtml;
+      p.innerHTML = result;
     }
 
-    function addArray() {
-      const inputElement = document.querySelector('input');
-      const inputValue = inputElement.value;
+    // ver3
+    let array3 = []
+    displayValue3();
 
-      todoList.push(inputValue);
-
-      inputElement.value = '';
-      showTodo();
+    function clickButton3() {
+      const input = document.querySelector('.input3');
+      const name = input.value;
+      const dueDateElement = document.querySelector('.date')
+      const dueDate = dueDateElement.value;
+      array3.push(
+        { name, dueDate }
+      )
+      displayValue3();
+      input.value = '';
     }
 
-    function removeArray() {
-      todoList.splice(0, 1);
-      showTodo();
+    function displayValue3() {
+      let result = '';
+      const p = document.querySelector('.result-3');
+      for (let i = 0; i < array3.length; i++) {
+        const { name, dueDate } = array3[i];
+        const html = `
+          <div>${name}</div>
+          <div>${dueDate}</div>
+          <button class="delete" onclick="
+            array3.splice(${i}, 1)
+            displayValue3();
+          ">Delete</button>
+        `;
+        result += html;
+      }
+      p.innerHTML = result;
     }
 
   </script>

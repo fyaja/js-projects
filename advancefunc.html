@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advance Function</title>
+</head>
+
+<body>
+  <script>
+    // we can call it anywhere
+    func();
+    function func() {
+      console.log('hello')
+    };
+
+
+    // we can't call it if we didn't create it yet
+    const function1 = function () {
+      console.log('hello1')
+    };
+    function1();
+
+    // we can save it in an object (method)
+    const obj = {
+      num: 2,
+      fun: function greeting() {
+        console.log('hello2')
+      }
+    }
+
+    obj.fun();
+
+    // passing value into a function
+    function display(param) {
+      console.log(param)
+    }
+
+    display(2);
+
+    // because function are value, we can also pass a function into another function
+    // this is called callback
+    function run(param) {
+      param();
+    }
+
+    run(function () {
+      console.log('5')
+    })
+  </script>
+</body>
+
+</html>
