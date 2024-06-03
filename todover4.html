@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>todo</title>
+
+  <style>
+    * {
+      font-family: Arial;
+    }
+
+    .div-3,
+    .result-3 {
+      display: grid;
+      grid-template-columns: 250px 150px 100px;
+      column-gap: 10px;
+      row-gap: 10px;
+      align-items: center;
+    }
+
+    .input3,
+    .date {
+      font-size: 15px;
+      padding: 6px;
+    }
+
+    .btn-3 {
+      border: none;
+      color: white;
+      background-color: green;
+      font-size: 15px;
+      cursor: pointer;
+      padding: 10px;
+    }
+
+    .delete {
+      border: none;
+      color: white;
+      background-color: darkred;
+      font-size: 15px;
+      cursor: pointer;
+      padding: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <p>Todo List Practice 3</p>
+  <div class="div-3">
+    <input class="input3" type="text" placeholder="Todo name">
+    <input type="date" class="date">
+    <button class="btn-3" onclick="
+    clickButton3()">Add</button>
+    <div class="result-3"></div>
+  </div>
+
+  <script>
+    // ver4
+    let array3 = []
+    displayValue3();
+
+    function clickButton3() {
+      const input = document.querySelector('.input3');
+      const name = input.value;
+      const dueDateElement = document.querySelector('.date')
+      const dueDate = dueDateElement.value;
+      array3.push(
+        { name, dueDate }
+      )
+      displayValue3();
+      input.value = '';
+    }
+
+    function displayValue3() {
+      let result = '';
+      const p = document.querySelector('.result-3');
+      // using forEach
+      array3.forEach(function (value, index) {
+        const { name, dueDate } = value;
+        const html = `
+          <div>${name}</div>
+          <div>${dueDate}</div>
+          <button class="delete" onclick="
+            array3.splice(${index}, 1)
+            displayValue3();
+          ">Delete</button>
+        `;
+        result += html;
+      })
+      p.innerHTML = result;
+    }
+
+  </script>
+</body>
+
+</html>

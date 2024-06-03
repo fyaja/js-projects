@@ -14,6 +14,10 @@
     .title {
       font-size: 30px;
     }
+
+    button {
+      cursor: pointer;
+    }
   </style>
   <title>Suit Jawa</title>
 </head>
@@ -35,10 +39,29 @@
   <button onclick="
   resetScore();
   ">Reset Score</button>
+  <button onclick="
+  autoPlay();
+  ">Auto Play</button>
 
   <script>
     let score = JSON.parse(localStorage.getItem('score')) || { Menang: 0, Kalah: 0, Seri: 0 };
     updateScoreElement();
+
+    let autoPlaying = false;
+    let intervalId;
+
+    function autoPlay() {
+      if (!autoPlaying) {
+        intervalId = setInterval(function () {
+          const randomMove = pickComputerMove();
+          playGame(randomMove);
+        }, 1000)
+        autoPlaying = true;
+      } else {
+        clearInterval(intervalId)
+        autoPlaying = false
+      }
+    }
 
     function playGame(playerMove) {
       const computerMove = pickComputerMove();

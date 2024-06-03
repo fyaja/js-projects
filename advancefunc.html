@@ -8,6 +8,10 @@
 </head>
 
 <body>
+  <button onclick="
+  startInterval()">start interval</button>
+  <button onclick="
+  stopInterval()">stop interval</button>
   <script>
     // we can call it anywhere
     func();
@@ -48,6 +52,37 @@
     run(function () {
       console.log('5')
     })
+
+    //code will not wait and exevute next line if your code is an async code
+    setTimeout(function () {
+      console.log('hello3')
+    }, 3000);
+
+    console.log('next line')
+
+
+    let intervalId;
+
+    function startInterval() {
+      intervalId = setInterval(function () {
+        console.log('hello4')
+      }, 1000)
+    }
+
+    // we can clear/stop interval using clearinterval function
+    function stopInterval() {
+      clearInterval(intervalId);
+    }
+
+    // method forEach loop through an array
+    const values = ['1', '2', '3']
+      .forEach(function (value, index) {
+        // this is do same thing like continue
+        if (value === '2') {
+          return;
+        }
+        console.log(index, value)
+      })
   </script>
 </body>
 
