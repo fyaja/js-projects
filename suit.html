@@ -18,30 +18,28 @@
     button {
       cursor: pointer;
     }
+
+    .reset-popup {
+      margin-top: 10px;
+      display: grid;
+      grid-template-columns: 200px 70px 70px;
+      column-gap: 10px;
+    }
   </style>
   <title>Suit Jawa</title>
 </head>
 
 <body>
   <p class="title">Suit Jawa</p>
-  <button onclick="
-    playGame('Semut');
-  ">Semut</button>
-  <button onclick="
-    playGame('Manusia');
-  ">Manusia</button>
-  <button onclick="
-    playGame('Gajah');
-  ">Gajah</button>
+  <button class="play-btn-semut">Semut</button>
+  <button class="play-btn-manusia">Manusia</button>
+  <button class="play-btn-gajah">Gajah</button>
   <p class="result"></p>
   <p class="yourmove"></p>
   <p class="score"></p>
-  <button onclick="
-  resetScore();
-  ">Reset Score</button>
-  <button onclick="
-  autoPlay();
-  ">Auto Play</button>
+  <button class="resetScore">Reset Score</button>
+  <button class="autoPlay">Auto Play</button>
+  <div class="reset-popup"></div>
 
   <script>
     let score = JSON.parse(localStorage.getItem('score')) || { Menang: 0, Kalah: 0, Seri: 0 };
@@ -50,18 +48,29 @@
     let autoPlaying = false;
     let intervalId;
 
-    function autoPlay() {
-      if (!autoPlaying) {
-        intervalId = setInterval(function () {
-          const randomMove = pickComputerMove();
-          playGame(randomMove);
-        }, 1000)
-        autoPlaying = true;
-      } else {
-        clearInterval(intervalId)
-        autoPlaying = false
+    document.querySelector('.play-btn-semut').addEventListener('click', () => playGame('Semut'));
+
+    document.querySelector('.play-btn-manusia').addEventListener('click', () => playGame('Manusia'));
+
+    document.querySelector('.play-btn-gajah').addEventListener('click', () => playGame('Gajah'));
+
+    document.querySelector('.resetScore').addEventListener('click', resetScore);
+
+    document.querySelector('.autoPlay').addEventListener('click', autoPlay)
+
+    document.body.addEventListener('keydown', (event) => {
+      if (event.key === 's') {
+        playGame('Semut')
+      } else if (event.key === 'm') {
+        playGame('Manusia')
+      } else if (event.key === 'g') {
+        playGame('Gajah')
+      } else if (event.key === 'a') {
+        autoPlay()
+      } else if (event.key === 'Backspace') {
+        resetScore()
       }
-    }
+    })
 
     function playGame(playerMove) {
       const computerMove = pickComputerMove();
@@ -115,18 +124,46 @@
       return computerMove;
     }
 
+    const div = document.querySelector('.reset-popup');
+    function resetScore() {
+      div.innerHTML = `
+      <div>Yakin mau di reset? </div>
+      <button class="yes">Iyah</button>
+      <button class="no">Jangan</button>`
+      document.querySelector('.yes').addEventListener('click', () => {
+        score.Menang = 0;
+        score.Kalah = 0;
+        score.Seri = 0;
+        localStorage.removeItem('score');
+
+        updateScoreElement();
+        div.innerHTML = '';
+      })
+
+      document.querySelector('.no').addEventListener('click', () => {
+        div.innerHTML = '';
+      })
+    }
+
+
+    function autoPlay() {
+      if (!autoPlaying) {
+        intervalId = setInterval(() => {
+          document.querySelector('.autoPlay').textContent = 'Stop Play';
+          const randomMove = pickComputerMove();
+          playGame(randomMove);
+        }, 1000)
+        autoPlaying = true;
+      } else {
+        clearInterval(intervalId)
+        autoPlaying = false
+        document.querySelector('.autoPlay').textContent = 'Auto Play';
+      }
+    }
+
     function updateScoreElement() {
       document.querySelector('.score')
         .innerHTML = `Menang: ${score.Menang}. Kalah: ${score.Kalah}. Seri: ${score.Seri}`;
-    }
-
-    function resetScore() {
-      score.Menang = 0;
-      score.Kalah = 0;
-      score.Seri = 0;
-      localStorage.removeItem('score');
-
-      updateScoreElement();
     }
   </script>
 </body>

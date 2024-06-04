@@ -51,8 +51,7 @@
   <div class="div-3">
     <input class="input3" type="text" placeholder="Todo name">
     <input type="date" class="date">
-    <button class="btn-3" onclick="
-    clickButton3()">Add</button>
+    <button class="btn-3">Add</button>
     <div class="result-3"></div>
   </div>
 
@@ -61,7 +60,9 @@
     let array3 = []
     displayValue3();
 
-    function clickButton3() {
+    document.querySelector('.btn-3').addEventListener('click', addBtn)
+
+    function addBtn() {
       const input = document.querySelector('.input3');
       const name = input.value;
       const dueDateElement = document.querySelector('.date')
@@ -77,21 +78,23 @@
       let result = '';
       const p = document.querySelector('.result-3');
       // using forEach
-      array3.forEach(function (value, index) {
+      array3.forEach((value, index) => {
         const { name, dueDate } = value;
         const html = `
           <div>${name}</div>
           <div>${dueDate}</div>
-          <button class="delete" onclick="
-            array3.splice(${index}, 1)
-            displayValue3();
-          ">Delete</button>
+          <button class="delete">Delete</button>
         `;
         result += html;
       })
       p.innerHTML = result;
+      document.querySelectorAll('.delete').forEach((value, index) => {
+        value.addEventListener('click', () => {
+          array3.splice(index, 1)
+          displayValue3();
+        })
+      });
     }
-
   </script>
 </body>
 

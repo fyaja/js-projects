@@ -14,75 +14,118 @@
   stopInterval()">stop interval</button>
   <script>
     // we can call it anywhere
-    func();
-    function func() {
-      console.log('hello')
-    };
+    // func();
+    // function func() {
+    //   console.log('hello')
+    // };
 
 
     // we can't call it if we didn't create it yet
-    const function1 = function () {
-      console.log('hello1')
-    };
-    function1();
+    // const function1 = function () {
+    //   console.log('hello1')
+    // };
+    // function1();
 
     // we can save it in an object (method)
-    const obj = {
-      num: 2,
-      fun: function greeting() {
-        console.log('hello2')
-      }
-    }
+    // const obj = {
+    //   num: 2,
+    //   fun: function greeting() {
+    //     console.log('hello2')
+    //   }
+    // }
 
-    obj.fun();
+    // obj.fun();
 
     // passing value into a function
-    function display(param) {
-      console.log(param)
-    }
+    // function display(param) {
+    //   console.log(param)
+    // }
 
-    display(2);
+    // display(2);
 
     // because function are value, we can also pass a function into another function
     // this is called callback
-    function run(param) {
-      param();
-    }
+    // function run(param) {
+    //   param();
+    // }
 
-    run(function () {
-      console.log('5')
-    })
+    // run(function () {
+    //   console.log('5')
+    // })
 
     //code will not wait and exevute next line if your code is an async code
-    setTimeout(function () {
-      console.log('hello3')
-    }, 3000);
+    // setTimeout(function () {
+    //   console.log('hello3')
+    // }, 3000);
 
-    console.log('next line')
+    // console.log('next line')
 
 
-    let intervalId;
+    // let intervalId;
 
-    function startInterval() {
-      intervalId = setInterval(function () {
-        console.log('hello4')
-      }, 1000)
-    }
+    // function startInterval() {
+    //   intervalId = setInterval(function () {
+    //     console.log('hello4')
+    //   }, 1000)
+    // }
 
     // we can clear/stop interval using clearinterval function
-    function stopInterval() {
-      clearInterval(intervalId);
-    }
+    // function stopInterval() {
+    //   clearInterval(intervalId);
+    // }
 
     // method forEach loop through an array
-    const values = ['1', '2', '3']
-      .forEach(function (value, index) {
-        // this is do same thing like continue
-        if (value === '2') {
-          return;
-        }
-        console.log(index, value)
-      })
+    // const values = ['1', '2', '3']
+    //   .forEach(function (value, index) {
+    // this is do same thing like continue
+    //   if (value === '2') {
+    //     return;
+    //   }
+    //   console.log(index, value)
+    // })
+
+    // const arrowFunction = () => {
+    //   console.log('arrowFunction')
+    // }
+
+    // arrowFunction();
+
+    // with arrow function we can do this 
+    // const oneParam = param => {
+    //   console.log(param + 1);
+    // };
+
+    // oneParam(2)
+
+    // const oneLine = param => console.log(param + 1);
+    // oneLine(3);
+
+    // const object2 = {
+    //   method: () => {
+
+    //   },
+    // we can us this instead arrow function cuz it's easier to read
+    //   method() {
+
+    //   }
+    // }
+
+    // some method :)
+    // use filter for condition i guess :p
+
+    // filter
+    // create new array 
+    // if true put it. if false not put it.
+    // console.log([1, -3, 5].filter((value, index) => {
+    //   return value >= 0;
+    // }))
+
+    // map
+    // whatever we return add it into a new array
+    const array = [1, 1, 3];
+    console.log(array.map(value => value * 2))
+
+
   </script>
 </body>
 
